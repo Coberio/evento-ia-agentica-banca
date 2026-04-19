@@ -51,7 +51,7 @@ function Nav({ vertical }) {
   return (
     <>
       <div className="urgency-strip">
-        <strong>Descuento 10%</strong> para sponsors confirmados antes del 28 de febrero · Plazas muy limitadas
+        <strong>Descuento 20%</strong> para sponsors confirmados antes del 30 de abril · Plazas muy limitadas
       </div>
       <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-inner">
@@ -562,162 +562,43 @@ function TierDetail({ tier, name, level }) {
   );
 }
 
-// ---------- Reservar llamada (Calendly-style) ----------
+// ---------- Reservar llamada (Cal.com embed) ----------
 function BookCall({ vertical }) {
-  const [selectedDay, setSelectedDay] = useState(21);
-  const [selectedSlot, setSelectedSlot] = useState(null);
-  const [step, setStep] = useState('schedule'); // schedule | form | done
-  const [formData, setFormData] = useState({ name: '', email: '', company: '', tier: '' });
-
-  const availableDays = [20, 21, 22, 23, 24, 27, 28, 29, 30];
-  const slots = ['10:00', '11:00', '12:00', '16:00', '17:00', '18:00'];
-
-  const handleConfirm = (e) => {
-    e.preventDefault();
-    setStep('done');
-  };
-
   return (
     <section className="section" id="reservar">
       <div className="container">
         <div className="section-header center">
           <span className="eyebrow" style={{ justifyContent: 'center' }}>Próximo paso</span>
-          <h2>Reserva 30 min con el equipo.</h2>
-          <p className="lead" style={{ margin: '0 auto' }}>Te contamos los detalles, resolvemos dudas y diseñamos el paquete que mejor se adapta a ti. Sin compromiso.</p>
+          <h2>Reserva hasta 60 min. con el equipo.</h2>
+          <p className="lead" style={{ margin: '0 auto' }}>Te contamos los detalles, resolvemos dudas y diseñamos el paquete que mejor se adapta a ti, idealmente en menos de 60 min. Sin compromiso.</p>
         </div>
-
-        {step !== 'done' ? (
-          <div className="call-widget">
-            <div className="call-left">
-              <div className="host">
-                <div className="avatar">KM</div>
-                <div className="host-info">
-                  <div className="name">Kaajal Mansukhani</div>
-                  <div className="title">Co-Fundadora · Comms Manager</div>
-                </div>
-              </div>
-              <h3>Llamada sobre sponsorship {vertical.label}</h3>
-              <p>Hablemos del foro, los paquetes {vertical.tierLabel.toLowerCase()} y cómo encajar tus objetivos de marca con la audiencia C-level de banca y seguros.</p>
-              <div className="call-meta">
-                <div><IconClock /> 30 minutos</div>
-                <div><IconCam /> Google Meet</div>
-                <div><IconGlobe /> Europe/Madrid (CET)</div>
-              </div>
-            </div>
-            <div className="call-right">
-              {step === 'schedule' ? (
-                <>
-                  <h4>Selecciona fecha y hora</h4>
-                  <div className="month">Abril 2026</div>
-                  <div className="calendar-grid">
-                    {['L','M','X','J','V','S','D'].map(d => <div key={d} className="cal-dow">{d}</div>)}
-                    {/* April 2026: April 1 = Wednesday, so 2 empty cells (L,M) */}
-                    {Array.from({ length: 2 }).map((_, i) => <div key={`e${i}`} className="cal-day empty"></div>)}
-                    {Array.from({ length: 30 }).map((_, i) => {
-                      const day = i + 1;
-                      const isAvail = availableDays.includes(day);
-                      const active = day === selectedDay;
-                      return (
-                        <div
-                          key={day}
-                          className={`cal-day ${isAvail ? 'available' : ''} ${active ? 'active' : ''}`}
-                          onClick={isAvail ? () => setSelectedDay(day) : undefined}
-                        >
-                          {day}
-                        </div>
-                      );
-                    })}
-                  </div>
-                  <div className="slots-label">Disponible · Martes 21 abril</div>
-                  <div className="slots">
-                    {slots.map(s => (
-                      <div
-                        key={s}
-                        className={`slot ${selectedSlot === s ? 'selected' : ''}`}
-                        onClick={() => setSelectedSlot(s)}
-                      >{s}</div>
-                    ))}
-                  </div>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    disabled={!selectedSlot}
-                    style={{ width: '100%', justifyContent: 'center', opacity: selectedSlot ? 1 : 0.4 }}
-                    onClick={() => selectedSlot && setStep('form')}
-                  >
-                    Continuar {selectedSlot && `· ${selectedSlot}`} <IconArrow />
-                  </button>
-                </>
-              ) : (
-                <form className="call-form" onSubmit={handleConfirm}>
-                  <h4>Tus datos</h4>
-                  <div className="month" style={{ marginBottom: 16 }}>
-                    Martes 21 abril · {selectedSlot} · 30 min
-                  </div>
-                  <input
-                    required
-                    placeholder="Nombre completo"
-                    value={formData.name}
-                    onChange={e => setFormData({ ...formData, name: e.target.value })}
-                  />
-                  <input
-                    required
-                    type="email"
-                    placeholder="Email corporativo"
-                    value={formData.email}
-                    onChange={e => setFormData({ ...formData, email: e.target.value })}
-                  />
-                  <div className="row-2">
-                    <input
-                      required
-                      placeholder="Empresa"
-                      value={formData.company}
-                      onChange={e => setFormData({ ...formData, company: e.target.value })}
-                    />
-                    <select
-                      value={formData.tier}
-                      onChange={e => setFormData({ ...formData, tier: e.target.value })}
-                    >
-                      <option value="">Paquete de interés</option>
-                      {vertical.tierNames.map(n => <option key={n} value={n}>{n}</option>)}
-                      <option value="Personalizado">Personalizado</option>
-                      <option value="Explorar">Explorar opciones</option>
-                    </select>
-                  </div>
-                  <textarea
-                    rows="3"
-                    placeholder="Cuéntanos brevemente qué te gustaría explorar (opcional)"
-                    onChange={e => setFormData({ ...formData, note: e.target.value })}
-                  />
-                  <div style={{ display: 'flex', gap: 10 }}>
-                    <button type="button" className="btn btn-ghost" onClick={() => setStep('schedule')}>← Atrás</button>
-                    <button type="submit" className="btn btn-primary" style={{ flex: 1, justifyContent: 'center' }}>
-                      Confirmar llamada <IconArrow />
-                    </button>
-                  </div>
-                </form>
-              )}
-            </div>
-          </div>
-        ) : (
-          <div className="call-widget" style={{ gridTemplateColumns: '1fr' }}>
-            <div className="confirmed">
-              <div className="check-circle"><IconCheck size={28} /></div>
-              <h3>Llamada confirmada</h3>
-              <p>Te hemos enviado la invitación con el enlace de Google Meet a <strong>{formData.email || 'tu email'}</strong>.</p>
-              <p>Hablamos pronto sobre sponsorship {vertical.label} — {formData.tier || 'opciones'}.</p>
-              <div className="detail">Martes 21 Abril · {selectedSlot} CET · 30 min · con Kaajal</div>
-            </div>
-          </div>
-        )}
+        <div style={{ maxWidth: 1100, margin: '0 auto', background: 'var(--bg-1)', border: '1px solid var(--line)', borderRadius: 'var(--r-xl)', overflow: 'hidden' }}>
+          <iframe
+            src="https://cal.com/segurosia/prioritaria?duration=60"
+            title="Reservar llamada"
+            style={{ width: '100%', height: 780, border: 0, display: 'block', background: 'transparent' }}
+            loading="lazy"
+          />
+        </div>
+        <p style={{ textAlign: 'center', marginTop: 20, fontSize: 13, color: 'var(--ink-3)' }}>
+          ¿Prefieres escribir? <a href="mailto:hola@inteligenciaartificialagentica.com" style={{ color: 'var(--accent)' }}>hola@inteligenciaartificialagentica.com</a>
+        </p>
       </div>
     </section>
   );
 }
 
-// ---------- Formulario de adhesión ----------
+// ---------- Formulario de adhesión (Tally embed) ----------
 function Adhesion({ vertical }) {
-  const [tier, setTier] = useState('');
+  useEffect(() => {
+    const load = () => window.Tally && window.Tally.loadEmbeds && window.Tally.loadEmbeds();
+    if (window.Tally) { load(); return; }
+    const s = document.createElement('script');
+    s.src = 'https://tally.so/widgets/embed.js';
+    s.async = true;
+    s.onload = load;
+    document.body.appendChild(s);
+  }, []);
   return (
     <section className="section" id="adhesion">
       <div className="container">
@@ -726,62 +607,22 @@ function Adhesion({ vertical }) {
           <h2>¿Lo tienes claro? Formalízalo aquí.</h2>
           <p className="lead" style={{ margin: '0 auto' }}>Rellena el formulario y nuestro equipo te enviará la factura y el acuerdo de sponsorship en menos de 24h.</p>
         </div>
-        <form className="adhesion-form" onSubmit={e => { e.preventDefault(); alert('Formulario enviado — te contactaremos en 24h'); }}>
-          <div className="row-2">
-            <div className="field">
-              <label>Empresa / Organización</label>
-              <input required placeholder="Acme S.A." />
-            </div>
-            <div className="field">
-              <label>CIF</label>
-              <input required placeholder="B-12345678" />
-            </div>
-          </div>
-          <div className="row-2">
-            <div className="field">
-              <label>Persona de contacto</label>
-              <input required placeholder="Nombre y apellidos" />
-            </div>
-            <div className="field">
-              <label>Cargo</label>
-              <input required placeholder="Director de Marketing" />
-            </div>
-          </div>
-          <div className="row-2">
-            <div className="field">
-              <label>Email</label>
-              <input required type="email" placeholder="nombre@empresa.com" />
-            </div>
-            <div className="field">
-              <label>Teléfono</label>
-              <input required placeholder="+34 600 000 000" />
-            </div>
-          </div>
-          <div className="field">
-            <label>Paquete de Sponsorship {vertical.tierLabel}</label>
-            <div className="tier-select">
-              {[...vertical.tierNames, 'PERSONALIZADO'].map(n => (
-                <div
-                  key={n}
-                  className={`tier-option ${tier === n ? 'selected' : ''}`}
-                  onClick={() => setTier(n)}
-                >
-                  {n}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="field">
-            <label>Observaciones (opcional)</label>
-            <textarea rows="4" placeholder="Comentarios, necesidades específicas, preguntas..." />
-          </div>
-          <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-            Enviar adhesión <IconArrow />
-          </button>
-          <p style={{ fontSize: 12, color: 'var(--ink-3)', textAlign: 'center', marginTop: 20, marginBottom: 0 }}>
-            Forma de pago: envío de factura a la firma del acuerdo. A todos los precios se suma IVA.
-          </p>
-        </form>
+        <div style={{ maxWidth: 780, margin: '0 auto', background: 'var(--bg-1)', border: '1px solid var(--line)', borderRadius: 'var(--r-xl)', padding: 32 }}>
+          <iframe
+            data-tally-src="https://tally.so/embed/obVl7N?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            loading="lazy"
+            width="100%"
+            height="480"
+            frameBorder="0"
+            marginHeight="0"
+            marginWidth="0"
+            title="Formulario de Adhesión"
+            style={{ border: 0, display: 'block', background: 'transparent' }}
+          />
+        </div>
+        <p style={{ fontSize: 12, color: 'var(--ink-3)', textAlign: 'center', marginTop: 20, marginBottom: 0 }}>
+          Forma de pago: envío de factura a la firma del acuerdo. A todos los precios se suma IVA.
+        </p>
       </div>
     </section>
   );
