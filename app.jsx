@@ -140,6 +140,10 @@ function Hero({ vertical }) {
                 <span className="label">Formato</span>
                 <span className="value">Presencial · Chatham House</span>
               </div>
+              <div>
+                <span className="label">Mercado</span>
+                <span className="value">~28.000 M€ primas bancaseguros 2025</span>
+              </div>
             </div>
             <div className="hero-cta">
               <a href="#reservar" className="btn btn-primary">
@@ -210,8 +214,8 @@ function Stats() {
         <div className="stats-bar-label">Directivos C-Level</div>
       </div>
       <div className="stats-bar-item">
-        <div className="stats-bar-num">6</div>
-        <div className="stats-bar-label">Verticales Temáticas</div>
+        <div className="stats-bar-num">50%</div>
+        <div className="stats-bar-label">Cuota bancaseguros en Vida</div>
       </div>
       <div className="stats-bar-item">
         <div className="stats-bar-num">{inView ? c3000.toLocaleString('es-ES') : 0}+</div>
@@ -240,11 +244,11 @@ function AboutForo() {
         <div className="reasons-grid">
           {[
             ['01', 'Liderazgo sectorial', 'Posicionarse como una de las entidades que impulsa la conversación seria sobre IA Agéntica en banca. No asistir al debate: liderarlo.'],
-            ['02', 'Posicionamiento institucional', 'Vuestra entidad quedará asociada a la adopción responsable, regulada y con criterio de la IA Agéntica en servicios financieros, antes de que el sector esté saturado.'],
+            ['02', 'Posicionamiento institucional', 'Vuestra entidad quedará asociada a la adopción responsable y regulada de la IA Agéntica en bancaseguros. El canal distribuye más del 50% del Vida en España: quienes lideren la conversación ahora marcarán la posición sectorial durante años.'],
             ['03', 'Contribución editorial real', 'Un directivo de vuestra entidad participa en una mesa de alto nivel junto a pares de otras entidades. El programa es curado: sin charlas comerciales, sin feria de proveedores.'],
-            ['04', 'Scouting cualificado', 'Acceso privado a los proveedores de IA más relevantes del momento, ya filtrados por SegurosIA. Detectad partners y evaluad tecnologías sin tener que ir a ferias masivas.'],
+            ['04', 'Scouting cualificado', 'Acceso privado a los proveedores de IA más relevantes para bancaseguros, ya filtrados por SegurosIA: soluciones de suscripción automatizada, pricing predictivo, advisory híbrido y gestión de siniestros. Sin ferias masivas.'],
             ['05', 'Activo interno para el comité', 'Post-evento: informe ejecutivo con benchmark sectorial, mapa de proveedores, casos de uso en producción y oportunidades detectadas. Material directo para vuestro comité de dirección.'],
-            ['06', 'Marco regulatorio integrado', 'DORA, AI Act, Sandbox Financiero y normativa del BdE forman parte del programa, no son un añadido. Avalado por AEPD y DGSFP.'],
+            ['06', 'Marco regulatorio integrado', 'AI Act (sistemas de alto riesgo en Vida/Salud), IDD, Solvency II, PRIIPs y la doble supervisión BdE/BCE–DGSFP forman parte del programa desde el diseño, no son un añadido. Avalado por AEPD y DGSFP en el Sandbox Financiero.'],
           ].map(([num, title, desc], i) => (
             <div className={`reason reveal reveal-delay-${i + 1} ${inView ? 'in-view' : ''}`} key={num}>
               <div className="reason-num">{num}</div>
@@ -331,7 +335,7 @@ function Verticals() {
         <div className="section-header">
           <span className="eyebrow">Programa</span>
           <h2>Seis verticales temáticas.</h2>
-          <p className="lead">El programa se estructura en torno a seis verticales que cubren los aspectos más críticos de la IA Agéntica aplicada al sector. Las entidades participantes pueden proponer retos sectoriales al comité de programa.</p>
+          <p className="lead">El programa cubre los retos más críticos de la IA Agéntica aplicada a bancaseguros: distribución, pricing, suscripción y compliance. Las entidades participantes pueden proponer retos sectoriales al comité de programa.</p>
         </div>
         <div className="verticals-grid">
           {items.map(([title, desc], i) => (
@@ -369,7 +373,7 @@ function Agenda() {
         <div className="section-header">
           <span className="eyebrow">Agenda · 16 de junio</span>
           <h2>Una jornada de alto nivel diseñada para la acción.</h2>
-          <p className="lead">Ponencias de 30 minutos con Q&amp;A abierto. El programa recoge retos sectoriales propuestos por las entidades participantes.</p>
+          <p className="lead">Ponencias de 30 minutos con Q&amp;A abierto, diseñadas para los retos reales del canal bancaseguros. El programa recoge retos sectoriales propuestos por las entidades participantes.</p>
         </div>
         <div className="agenda-table">
           {rows.map(([time, title, tag, highlight], i) => (
@@ -394,7 +398,7 @@ function Audience() {
         <div className="section-header">
           <span className="eyebrow">Perfil de la Audiencia</span>
           <h2>150 decisores. Cada inscripción, validada.</h2>
-          <p className="lead">Diseñado exclusivamente para directivos de primer nivel del sector financiero y asegurador. Aforo limitado para garantizar networking real.</p>
+          <p className="lead">Diseñado para los máximos responsables del canal bancaseguros: entidades con actividad aseguradora consolidada, en construcción o en evaluación. Aforo limitado para garantizar networking real.</p>
         </div>
         <div className="audience-grid">
           <div className="audience-card">
@@ -402,21 +406,22 @@ function Audience() {
             <ul className="audience-list" role="list">
               <li>CEOs y Directores Generales</li>
               <li>CIOs, CTOs y Chief AI Officers</li>
+              <li>Directores de Bancaseguros y Distribución</li>
               <li>Directores de Innovación y Transformación Digital</li>
               <li>Directores de Operaciones y Riesgos</li>
               <li>Responsables de Compliance y Regulación</li>
-              <li>Directores de Negocio y Distribución</li>
+              <li>Responsables de Embedded Insurance</li>
             </ul>
           </div>
           <div className="audience-card">
             <h3>Entidades representadas</h3>
             <ul className="audience-list" role="list">
-              <li>Entidades bancarias y cajas de ahorro</li>
-              <li>Gestoras de activos y fondos de inversión</li>
-              <li>Entidades de pago y neo-bancos</li>
-              <li>Grandes corredurías y agencias de suscripción</li>
-              <li>Reguladores e instituciones públicas</li>
-              <li>Compañías aseguradoras (socios sectoriales)</li>
+              <li>Bancos con filial aseguradora propia</li>
+              <li>Bancos con OBSV (Operador Banca-Seguros Vinculado)</li>
+              <li>Direcciones de bancaseguros en grupos financieros</li>
+              <li>Neobancos y plataformas financieras evaluando la entrada al canal</li>
+              <li>Reguladores e instituciones públicas (BdE, DGSFP)</li>
+              <li>Compañías aseguradoras socias del canal bancaseguros</li>
             </ul>
           </div>
         </div>
@@ -685,7 +690,7 @@ function Footer({ vertical }) {
               <span>IA Agéntica</span>
             </a>
             <p style={{ fontSize: 13, color: 'var(--ink-3)', maxWidth: 320, marginTop: 16 }}>
-              El primer foro de IA Agéntica para decisores de banca y seguros en España. 16 de junio de 2026, Auditorio Beatriz Madrid.
+              El primer foro de IA Agéntica para banca con actividad aseguradora — actual o en evaluación. 16 de junio de 2026, Auditorio Beatriz Madrid.
             </p>
           </div>
           <div>
