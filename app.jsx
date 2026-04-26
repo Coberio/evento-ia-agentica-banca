@@ -83,7 +83,7 @@ function Nav({ vertical }) {
   return (
     <>
       <div className="urgency-strip">
-        Plazas de participación muy limitadas · <strong>Edición inaugural · 16 de junio</strong> · Auditorio Beatriz, Madrid
+        Plazas de participación muy limitadas · <strong>Edición inaugural · 16 de junio</strong> · Auditorio El Beatriz, Madrid
       </div>
       <nav className={`nav ${scrolled ? 'scrolled' : ''}`} aria-label="Navegación principal">
         <div className="nav-inner">
@@ -130,7 +130,7 @@ function Hero({ vertical }) {
               </div>
               <div>
                 <span className="label">Lugar</span>
-                <span className="value">Auditorio Beatriz · Madrid</span>
+                <span className="value">Auditorio El Beatriz · Madrid</span>
               </div>
               <div>
                 <span className="label">Aforo</span>
@@ -693,7 +693,7 @@ function Footer({ vertical }) {
               <span>IA Agéntica</span>
             </a>
             <p style={{ fontSize: 13, color: 'var(--ink-3)', maxWidth: 320, marginTop: 16 }}>
-              El primer foro de IA Agéntica para banca con actividad aseguradora — actual o en evaluación. 16 de junio de 2026, Auditorio Beatriz Madrid.
+              El primer foro de IA Agéntica para banca con actividad aseguradora — actual o en evaluación. 16 de junio de 2026, Auditorio El Beatriz Madrid.
             </p>
           </div>
           <div>
@@ -737,9 +737,9 @@ function Video() {
     <section className="section" id="video" ref={ref}>
       <div className={`container-narrow reveal ${inView ? 'in-view' : ''}`}>
         <div className="section-header center">
-          <span className="eyebrow" style={{ justifyContent: 'center' }}>El Foro · 16 de junio</span>
-          <h2>Por qué este foro <em style={{ fontStyle: 'italic' }}>importa ahora</em>.</h2>
-          <p className="lead" style={{ margin: '0 auto' }}>Una pieza breve sobre lo que está en juego. Lo que escucharás dentro del foro va más allá.</p>
+          <span className="eyebrow" style={{ justifyContent: 'center' }}>El Auditorio · Madrid</span>
+          <h2>El mejor lugar para <em style={{ fontStyle: 'italic' }}>celebrar este foro</em>.</h2>
+          <p className="lead" style={{ margin: '0 auto' }}>Un recorrido por El Beatriz, el auditorio que hemos elegido para acoger esta primera edición. El espacio también forma parte del mensaje.</p>
         </div>
         <div className="video-frame">
           <iframe
